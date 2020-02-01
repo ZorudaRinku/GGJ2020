@@ -5,13 +5,15 @@ using UnityEditor.SceneManagement;
 
 public class Movement : MonoBehaviour
 {
-    bool Canmove = true;
-    bool isdead = false;
+    public static bool Canmove = true;
+    public static bool isdead = false;
+    [SerializeField]
+    GameObject positionTester;
     private IEnumerator coroutine;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -38,69 +40,61 @@ public class Movement : MonoBehaviour
         //}
 
         {
-            if (Canmove == true)
+            if (Input.GetKeyDown(KeyCode.A))
             {
-
-                if (Input.GetKeyDown(KeyCode.A))
+                if (Physics2D.OverlapCircle(new Vector2(transform.position.x - 1, transform.position.y), 0.2f) != null)
                 {
-                    transform.position = new Vector2(transform.position.x - 1, transform.position.y);
-                        coroutine = Wait(1 * Time.deltaTime);
-                        if (isdead == true)
-                        {
-                            transform.position = new Vector2(transform.position.x + 1, transform.position.y);
-                        }
-
+                        transform.position = new Vector2(transform.position.x - 1, transform.position.y);
                 }
-                if (Input.GetKeyDown(KeyCode.D))
+            }
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                if (Physics2D.OverlapCircle(new Vector2(transform.position.x + 1, transform.position.y), 0.2f) != null)
                 {
                     transform.position = new Vector2(transform.position.x + 1, transform.position.y);
-                    if (isdead == true)
-                    {
-                        transform.position = new Vector2(transform.position.x - 1, transform.position.y);
-                    }
                 }
-                if (Input.GetKeyDown(KeyCode.W))
+            }
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                if (Physics2D.OverlapCircle(new Vector2(transform.position.x , transform.position.y + 1), 0.2f) != null)
                 {
                     transform.position = new Vector2(transform.position.x, transform.position.y + 1);
-                    if (isdead == true)
-                    {
-                        transform.position = new Vector2(transform.position.x, transform.position.y - 1);
-                    }
                 }
-                if (Input.GetKeyDown(KeyCode.S))
+            }
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                if (Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y - 1), 0.2f) != null)
                 {
                     transform.position = new Vector2(transform.position.x, transform.position.y - 1);
-                    
-                    if (isdead == true)
-                    {
-                        transform.position = new Vector2(transform.position.x + 1, transform.position.y + 1);
-                    }
                 }
-
             }
+
+
 
         }
 
     }
+
+    private IEnumerator Wait(float waitTime)
+    {
+
+        yield return new WaitForSeconds(waitTime);
+
+
+    }
+
+    /// <summary>
+    /// if manages to exit the boat, sends to center
+    /// </summary>
+    /// <param name="other"></param>
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.tag == "Ship")
         {
-            Canmove = false;
-            isdead = true;
+            Movement.Canmove = false;
+
         }
-        else
-        {
-            Debug.Log("I am touching the ship");
-            Canmove = true;
-        }
-    }
-    private IEnumerator Wait(float waitTime)
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(waitTime);
-        }
+
     }
 
     //private void OnColliderEnter2D(Collider2D collision)
