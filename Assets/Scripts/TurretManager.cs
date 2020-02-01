@@ -8,12 +8,14 @@ public class TurretManager : MonoBehaviour
     GameObject turret;
     [SerializeField]
     GameObject cannonParent;
+    [SerializeField]
+    GameObject Bullet;
     GameObject anchor;
     static public List<GameObject> cannons = new List<GameObject>();
     static public GameObject currentCannon;
     int currentCannonIndex;
     public static bool turretMode = true;
-    
+    bool canShoot;
     float anchorMove = .05f;
 
     public static bool anchorMode = false;
@@ -23,7 +25,7 @@ public class TurretManager : MonoBehaviour
     {
         StartCoroutine(wait());
         anchor = GameObject.FindWithTag("Anchor");
-        
+        canShoot = true;
         
 
     }
@@ -36,10 +38,17 @@ public class TurretManager : MonoBehaviour
             anchorMode = !anchorMode;
             turretMode = !turretMode;
             Debug.Log(anchorMode + " " + turretMode);
+            
 
         }
         if (turretMode)
         {
+            if (Input.GetKeyDown(KeyCode.KeypadEnter) && canShoot)
+            {
+                Instantiate(Bullet, currentCannon.transform.position, transform.rotation);
+                canShoot = false;
+                StartCoroutine(waitShoot());
+            }
             if (Input.GetKeyDown(KeyCode.Keypad1))
             {
                 if (currentCannon == cannons[0])
@@ -64,10 +73,7 @@ public class TurretManager : MonoBehaviour
                     currentCannon = cannons[currentCannonIndex + 1];
                 }
             }
-            if (Input.GetKeyDown(KeyCode.KeypadEnter))
-            {
-                Instantiate(turret, new Vector3(Random.Range(-20, 20), Random.Range(-20, 20), 0), transform.rotation);
-            }
+          
         }
         else if (anchorMode)
         {
@@ -104,5 +110,10 @@ public class TurretManager : MonoBehaviour
         yield return new WaitForSeconds(.5f);
         currentCannon = cannons[0];
         currentCannonIndex = 0;
+    }
+    IEnumerator waitShoot()
+    {
+        yield return new WaitForSeconds(.75f);
+        canShoot = true;
     }
 }

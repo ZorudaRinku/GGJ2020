@@ -7,6 +7,7 @@ public class Turret : MonoBehaviour
     Vector3 rotationTool = new Vector3();
     float rotationValue = 1;
     Color currentColor;
+    
     void Start()
     {
         
