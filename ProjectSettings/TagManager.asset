@@ -41,3 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Enemies
+    uniqueID: 3435861749
+    locked: 0
+  - name: Boat Tiles
+    uniqueID: 3632707547
+    locked: 0
