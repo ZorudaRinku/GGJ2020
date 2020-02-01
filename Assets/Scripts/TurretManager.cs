@@ -23,7 +23,7 @@ public class TurretManager : MonoBehaviour
     {
         StartCoroutine(wait());
         anchor = GameObject.FindWithTag("Anchor");
-        anchor.transform.position = new Vector3(transform.position.x, transform.position.y - 5, 0);
+        
         
 
     }
