@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class fishSpawner : MonoBehaviour
+public class birbSpawner : MonoBehaviour
 {
-    [SerializeField] float spawnSpeedSecondsLow = 3f;
-    [SerializeField] float spawnSpeedSecondsHigh = 5f;
+    [SerializeField] float spawnSpeedSecondsLow = 4f;
+    [SerializeField] float spawnSpeedSecondsHigh = 7f;
     [SerializeField] float spawnRadiusLow = 5f;
     [SerializeField] float spawnRadiusHigh = 10f;
     [SerializeField] float spawnMultiplier = 1f;
-    [SerializeField] GameObject fishPrefab;
+    [SerializeField] GameObject birbPrefab;
     [SerializeField] Transform heartShip;
 
     // Start is called before the first frame update
@@ -39,15 +39,15 @@ public class fishSpawner : MonoBehaviour
         Vector3 position = RandomCircle(center, spawnRadius);
         Quaternion rotation = Quaternion.FromToRotation(Vector3.forward, center - position);
         Quaternion fixedRotation = new Quaternion(0, 0, rotation.z, 1);
-        Instantiate(fishPrefab, position, fixedRotation);
+        Instantiate(birbPrefab, position, fixedRotation);
 
         // Start function as a coroutine
         yield return StartCoroutine("waitAndSpawn");
     }
 
-    Vector3 RandomCircle (Vector3 center, float radius)
+    Vector3 RandomCircle(Vector3 center, float radius)
     {
-        float angle = Random.value * 180  + 90;
+        float angle = Random.value * 180 + 270;
         Vector3 pos;
         pos.x = center.x + radius * Mathf.Sin(angle * Mathf.Deg2Rad);
         pos.y = center.y + radius * Mathf.Cos(angle * Mathf.Deg2Rad);
@@ -55,3 +55,4 @@ public class fishSpawner : MonoBehaviour
         return pos;
     }
 }
+

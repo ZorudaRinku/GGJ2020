@@ -22,7 +22,7 @@ public class fishController : MonoBehaviour
     void Awake() 
     {
         transform.Rotate(0, 0, 0, Space.World);
-        if (GameObject.FindGameObjectWithTag("Respawn") != null)
+        if (GameObject.FindGameObjectWithTag("Respawn") != null)//yo dumbass rememeber to change this
         {
             noHeart = true;
 
@@ -77,16 +77,22 @@ public class fishController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D fishCollision)
     {
-        if (fishCollision.transform.tag == "Finish")
+        if (fishCollision.transform.tag == "Finish")//destroys both fish and ship tile
         {
             Destroy(fishCollision.transform.gameObject);
             Destroy(gameObject);
         }
-        else if (fishCollision.transform.tag == "Respawn")
+        else if (fishCollision.transform.tag == "Respawn")//game ends when it kills the heart
         {
+            /*
             Destroy(fishCollision.transform.gameObject);
             Destroy(gameObject);
             Debug.Log("Will end game and restart to menu");
+            */
+        }
+        else if (fishCollision.transform.tag == "bullet")//gives coins when killed with cannons
+        {
+            
         }
     }
 
