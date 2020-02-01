@@ -4,53 +4,63 @@ using UnityEngine;
 
 public class fishController : MonoBehaviour
 {
-    [SerializeField] public Transform heartShip;
+    GameObject heartShip;
 
     private Rigidbody2D rb2D;
-    public float thrust = 50f;
 
-    public float rotateSpeed = 10;
+    [SerializeField] float thrust = 50f;
 
-    public float attackSpeedSeconds = 3;
+    [SerializeField] float rotateSpeed = 10;
 
+    [SerializeField] float attackSpeedSeconds = 3;
+
+    bool noHeart = false;
     //used for aiming at heart
     Vector3 targetDirection;
 
     // Start is called before the first frame update
-    IEnumerator Start() //void Start()
+    void Awake() 
     {
-        // Determine which direction to rotate towards
-        targetDirection = heartShip.position - transform.position;
-        // The step size is equal to speed times frame time.
-        float singleStep = rotateSpeed * Time.deltaTime;
-        // Rotate the forward vector towards the target direction by one step
-        Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
-        // Draw a ray pointing at our target in
-        //Debug.DrawRay(transform.position, newDirection, Color.red);
-        
+        transform.Rotate(0, 0, 0, Space.World);
+        if (GameObject.FindGameObjectWithTag("Respawn") != null)
+        {
+            noHeart = true;
 
+            heartShip = GameObject.FindGameObjectWithTag("Respawn"); //yo dumbass remember to change this
 
-        //Launch fish at boat's heart
-        rb2D = gameObject.GetComponent<Rigidbody2D>();
-        //Fire fish
-        rb2D.AddForce(transform.forward * thrust);
+            // Determine which direction to rotate towards
+            targetDirection = heartShip.transform.position - transform.position;
+            // The step size is equal to speed times frame time.
+            float singleStep = rotateSpeed * Time.deltaTime;
+            // Rotate the forward vector towards the target direction by one step
+            Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
+            // Draw a ray pointing at our target in
+            //Debug.DrawRay(transform.position, newDirection, Color.red);
 
-        yield return StartCoroutine("waitAndLaunch");
+            //Launch fish at boat's heart
+            rb2D = gameObject.GetComponent<Rigidbody2D>();
+            //Fire fish
+            rb2D.AddForce(transform.forward * thrust);
+
+            StartCoroutine(waitAndLaunch());
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-     //Change rotation towards heart
-        // Determine which direction to rotate towards
-        targetDirection = heartShip.position - transform.position;
-        // The step size is equal to speed times frame time.
-        float singleStep = rotateSpeed * Time.deltaTime;
-        // Rotate the forward vector towards the target direction by one step
-        Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
-        // Draw a ray pointing at our target in
-        //Debug.DrawRay(transform.position, newDirection, Color.red);
-        
+        if (noHeart)
+        {
+            //Change rotation towards heart
+            // Determine which direction to rotate towards
+            targetDirection = heartShip.transform.position - transform.position;
+            // The step size is equal to speed times frame time.
+            float singleStep = rotateSpeed * Time.deltaTime;
+            // Rotate the forward vector towards the target direction by one step
+            Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
+            // Draw a ray pointing at our target in
+            //Debug.DrawRay(transform.position, newDirection, Color.red);
+        }
     }
 
     IEnumerator waitAndLaunch()
@@ -63,6 +73,21 @@ public class fishController : MonoBehaviour
 
         // Start function as a coroutine
         yield return StartCoroutine("waitAndLaunch");
+    }
+
+    void OnCollisionEnter2D(Collision2D fishCollision)
+    {
+        if (fishCollision.transform.tag == "Finish")
+        {
+            Destroy(fishCollision.transform.gameObject);
+            Destroy(gameObject);
+        }
+        else if (fishCollision.transform.tag == "Respawn")
+        {
+            Destroy(fishCollision.transform.gameObject);
+            Destroy(gameObject);
+            Debug.Log("Will end game and restart to menu");
+        }
     }
 
 }
