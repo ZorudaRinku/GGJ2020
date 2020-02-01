@@ -10,8 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9014661554878913453}
   - component: {fileID: 9014661554878913452}
-  - component: {fileID: 9014661554878913455}
-  - component: {fileID: -3347284396208836380}
+  - component: {fileID: 5827641236292625416}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -72,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bda189dacf7a3524d9e7f372f037367b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5660bfc97a0bbad41b64641989fd133c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -83,19 +82,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &9014661554878913455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9014661554878913454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9c24bfc3b427ee4ab37f2acdd65a567, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &-3347284396208836380
+--- !u!114 &5827641236292625416
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
