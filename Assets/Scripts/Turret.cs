@@ -17,26 +17,29 @@ public class Turret : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if (this.transform.gameObject == TurretManager.currentCannon)
+        if (TurretManager.turretMode)
         {
-            if (Input.GetKey(KeyCode.LeftArrow))
+            if (this.transform.gameObject == TurretManager.currentCannon)
             {
-                rotationTool.z = rotationValue;
-                Debug.Log("left arrow");
+                if (Input.GetKey(KeyCode.LeftArrow))
+                {
+                    rotationTool.z = rotationValue;
+
+                }
+                else if (Input.GetKey(KeyCode.RightArrow))
+                {
+                    rotationTool.z = -rotationValue;
+                }
+                else
+                {
+                    rotationTool = Vector3.zero;
+                }
+
+                transform.eulerAngles = new Vector3(transform.eulerAngles.x + rotationTool.x, transform.eulerAngles.y + rotationTool.y, transform.eulerAngles.z + rotationTool.z);
+                currentColor.a = 1;
             }
-            else if (Input.GetKey(KeyCode.RightArrow))
-            {
-                rotationTool.z = -rotationValue;
-            }
-            else
-            {
-                rotationTool = Vector3.zero;
-            }
-            Debug.Log(transform.eulerAngles);
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x + rotationTool.x, transform.eulerAngles.y + rotationTool.y, transform.eulerAngles.z + rotationTool.z);
-            currentColor.a = 1;
         }
+        
         else
         {
             currentColor.a = .5f;

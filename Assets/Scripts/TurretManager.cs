@@ -12,10 +12,11 @@ public class TurretManager : MonoBehaviour
     static public List<GameObject> cannons = new List<GameObject>();
     static public GameObject currentCannon;
     int currentCannonIndex;
-    bool turretMode;
-    float anchorMove = .01f;
+    public static bool turretMode = true;
     
-    bool anchorMode;
+    float anchorMove = .05f;
+
+    public static bool anchorMode = false;
     
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,9 @@ public class TurretManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.KeypadPlus)) 
         {
+            anchorMode = !anchorMode;
+            turretMode = !turretMode;
+            Debug.Log(anchorMode + " " + turretMode);
 
         }
         if (turretMode)
@@ -69,23 +73,23 @@ public class TurretManager : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.LeftArrow))
             {
-                anchor.transform.position = new Vector2(transform.position.x - anchorMove, transform.position.y);
+                anchor.transform.position = new Vector2(anchor.transform.position.x - anchorMove, anchor.transform.position.y);
                 
 
             }
             if (Input.GetKey(KeyCode.RightArrow))
             {
-                anchor.transform.position = new Vector2(transform.position.x + anchorMove, transform.position.y);
+                anchor.transform.position = new Vector2(anchor.transform.position.x + anchorMove, anchor.transform.position.y);
                 
             }
-            if (Input.GetKey(KeyCode.UpArrow))
+            if (Input.GetKey(KeyCode.UpArrow) && anchor.transform.position.y + anchorMove < 0)
             {
-                anchor.transform.position = new Vector2(transform.position.x, transform.position.y + anchorMove);
+                anchor.transform.position = new Vector2(anchor.transform.position.x, anchor.transform.position.y + anchorMove);
                 
             }
             if (Input.GetKey(KeyCode.DownArrow))
             {
-                anchor.transform.position = new Vector2(transform.position.x, transform.position.y - anchorMove);
+                anchor.transform.position = new Vector2(anchor.transform.position.x, anchor.transform.position.y - anchorMove);
 
                 
             }
