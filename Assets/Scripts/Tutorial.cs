@@ -8,13 +8,12 @@ public class Tutorial : MonoBehaviour
 {
     TextMeshProUGUI TutorialText;
     TextMeshProUGUI NextButton;
-
+    [SerializeField] GameObject MainMenu;
     public void Start()
     {
         TutorialText = this.gameObject.transform.Find("Tutorial Pages").GetComponentInChildren<TextMeshProUGUI>();
         NextButton = this.gameObject.transform.Find("Next").Find("Text").GetComponent<TextMeshProUGUI>();
         TutorialText.text = TutorialTexts[page];
-        Time.timeScale = 0f;
     }
 
     int page = 0;
@@ -27,7 +26,7 @@ public class Tutorial : MonoBehaviour
         if (page + 1 == TutorialTexts.Length)
         {
             this.gameObject.SetActive(false);
-            Time.timeScale = 1f;
+            MainMenu.gameObject.SetActive(true);
         }
         if (page + 1 < TutorialTexts.Length){
             page = page + 1;
