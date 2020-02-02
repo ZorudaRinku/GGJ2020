@@ -53,4 +53,12 @@ public class Turret : MonoBehaviour
         this.GetComponent<SpriteRenderer>().color = currentColor;
        
     }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if(other.tag == "Ship")
+        {
+            TurretManager.cannons.Remove(transform.gameObject);
+            Destroy(gameObject);
+        }
+    }
 }

@@ -23,6 +23,7 @@ public class coinController : MonoBehaviour
             gameManager.coins += 500;
             Destroy(gameObject);
             Debug.Log(gameManager.coins);
+            SoundManager.PlaySound(Sounds.COIN);
         }
         if (anchorCollision.transform.tag == "Player")//destroys coin gives coin
         {

@@ -33,7 +33,7 @@ public class TurretManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.KeypadPlus)) 
+        if (Input.GetKeyDown(KeyCode.RightControl)) 
         {
             anchorMode = !anchorMode;
             turretMode = !turretMode;
@@ -41,15 +41,16 @@ public class TurretManager : MonoBehaviour
             
 
         }
-        if (turretMode)
+        if (turretMode && cannons.Count > 0)
         {
-            if (Input.GetKeyDown(KeyCode.KeypadEnter) && canShoot)
+            if (Input.GetKeyDown(KeyCode.RightShift) && canShoot)
             {
                 Instantiate(Bullet, currentCannon.transform.position, transform.rotation);
                 canShoot = false;
+                SoundManager.PlaySound(Sounds.CANNON);
                 StartCoroutine(waitShoot());
             }
-            if (Input.GetKeyDown(KeyCode.Keypad1))
+            if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 if (currentCannon == cannons[0])
                 {
@@ -62,7 +63,7 @@ public class TurretManager : MonoBehaviour
                     currentCannonIndex--;
                 }
             }
-            if (Input.GetKeyDown(KeyCode.Keypad3))
+            if (Input.GetKeyDown(KeyCode.DownArrow))
             {
                 if (currentCannon == cannons[cannons.Count - 1])
                 {

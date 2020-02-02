@@ -111,6 +111,7 @@ public class fishController : MonoBehaviour
         if (fishCollision.transform.tag == "Ship")//destroys both fish and ship tile
         {
             Destroy(gameObject);
+            SoundManager.PlaySound(Sounds.TILEBREAK);
         }
         else if (fishCollision.transform.tag == "Heart")//game ends when it kills the heart
         {

@@ -39,7 +39,7 @@ public class Health : MonoBehaviour
     {
         if (HealthCol.transform.tag == "Enemy")
         {
-            health = health - 1;
+            health = health - 2;
 
         }
     }

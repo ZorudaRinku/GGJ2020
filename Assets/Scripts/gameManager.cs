@@ -11,6 +11,7 @@ public class gameManager : MonoBehaviour
     void Start()
     {
         coins = 1500;
+        Time.timeScale = 1;
     }
 
     // Update is called once per frame

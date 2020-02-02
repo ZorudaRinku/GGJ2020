@@ -19,7 +19,7 @@ public class Tutorial : MonoBehaviour
     int page = 0;
     string[] TutorialTexts = new string[]{"Welcome to ShipWright!\n\nA co-op game!",
         "One player controls the shipwright,\nthe other controls the cannons.\n\nThe shipwright has to repair the ship\nfrom the onslaught from the seas and skies.",
-        "Shipwright Controls:\n\nWASD to move\nStand still and hold spacebar to build a cannon\nHold spacebar + left or right to build in that direction", "Gunner Controls:\n\nEnter to fire\nLeft and right arrows to turn cannon\nNum 1 previous cannon/Num 3 next cannon", "Anchor Controls:\n\nNumpad + to swap to anchor (arrow keys)"};
+        "Shipwright Controls:\n\nWASD to move\nStand still and hold spacebar to build a cannon\nHold spacebar + left or right to build in that direction", "Gunner Controls:\n\nShift to fire\nLeft and right arrows to turn cannon\nDown arrow previous cannon/Up arrow next cannon", "Anchor Controls:\n\nAnchor to swap to anchor (arrow keys)"};
     
     public void Next()
     {

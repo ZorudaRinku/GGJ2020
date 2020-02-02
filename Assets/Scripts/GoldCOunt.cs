@@ -6,7 +6,7 @@ using TMPro;
 public class GoldCOunt : MonoBehaviour
 {
     TextMeshProUGUI gameTimerText;
-    int gameTimer;
+    float gameTimer;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +17,8 @@ public class GoldCOunt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameTimer++;
-        gameTimerText.text = "Time: " + ((int)Time.time).ToString();
+        gameTimer += Time.deltaTime;
+        
+        gameTimerText.text = "Time: " + ((int)gameTimer).ToString();
     }
 }
