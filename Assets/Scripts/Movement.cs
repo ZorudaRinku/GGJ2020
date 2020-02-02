@@ -8,17 +8,22 @@ public class Movement : MonoBehaviour
     public static bool Canmove = true;
     public static bool isdead = false;
     private IEnumerator coroutine;
-    public static int buildTimerLeft = 120;
-    public static int buildTimerRight = 120;
-    public static int buildTimerCannon = 480;
+    int buildTimerLeft = 90;
+    int buildTimerRight = 90;
+    int buildTimerCannon = 380;
+    int repairtimer = 30;
     GameObject currentTile;
     [SerializeField]
     GameObject newTile;
     [SerializeField]
     GameObject newCannon;
+    [SerializeField]
+    GameObject RepairTile;
     bool canBuild = true;
+    bool canRepair = true;
     [SerializeField]
     GameObject Building;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -80,8 +85,11 @@ public class Movement : MonoBehaviour
                     transform.position = new Vector2(transform.position.x, transform.position.y - 1);
                 }
             }
+            //GameObject tile = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y), 0.2f).gameObject;
+
             if (canBuild)
             {
+
                 if (buildTimerLeft <= 0 && gameManager.coins >= 500)
                 {
                     if (Physics2D.OverlapCircle(new Vector2(transform.position.x - 1, transform.position.y), 0.2f) == null)
@@ -104,17 +112,27 @@ public class Movement : MonoBehaviour
                 }
                 if (buildTimerCannon <= 0 && gameManager.coins >= 1500)
                 {
-                    canBuild = false;
-                    gameManager.coins -= 1500;
-                    StartCoroutine(Wait(3));
+                        canBuild = false;
+                        gameManager.coins -= 1500;
+                        StartCoroutine(Wait(3));
+                }
+            }
+            if(canRepair)
+            {
+                if(Input.GetKeyUp(KeyCode.Space))
+                {
+                    if (currentTile.GetComponent<Health>().health == 1 && repairtimer <= 0)
+                    {
+                        currentTile.GetComponent<Health>().health += 1;
+                    }
                 }
             }
 
             if (Input.GetKeyUp(KeyCode.Space))
             {
-                buildTimerLeft = 120;
-                buildTimerRight = 120;
-                buildTimerCannon = 480;
+                buildTimerLeft = 90;
+                buildTimerRight = 90;
+                buildTimerCannon = 380;
                 foreach (GameObject build in GameObject.FindGameObjectsWithTag("Build"))
                 {
                     Destroy(build);
@@ -141,20 +159,21 @@ public class Movement : MonoBehaviour
             }
             else if (Input.GetKey(KeyCode.Space))
             {
+                Debug.Log(buildTimerCannon);
                 buildTimerCannon--;
             }
 
-            if (buildTimerCannon == 479 && gameManager.coins >= 1500)
+            if (buildTimerCannon == 379 && gameManager.coins >= 1500)
             {
                 Instantiate(Building, new Vector3(transform.position.x, transform.position.y, 0), transform.rotation);
             }
 
-            if (buildTimerLeft == 119 && gameManager.coins >= 500)
+            if (buildTimerLeft == 89 && gameManager.coins >= 500)
             {
                 Instantiate(Building, new Vector3(transform.position.x - 1, transform.position.y, 0), transform.rotation);
             }
 
-            if (buildTimerRight == 119 && gameManager.coins >= 500)
+            if (buildTimerRight == 89 && gameManager.coins >= 500)
             {
                 Instantiate(Building, new Vector3(transform.position.x + 1, transform.position.y, 0), transform.rotation);
             }
@@ -165,7 +184,7 @@ public class Movement : MonoBehaviour
     private IEnumerator Wait(float waitTime)
     {
         Instantiate(newCannon, new Vector3(transform.position.x, transform.position.y, 0), transform.rotation);
-        buildTimerCannon = 480;
+        buildTimerCannon = 380;
 
         yield return new WaitForSeconds(waitTime);
 
@@ -194,6 +213,19 @@ public class Movement : MonoBehaviour
         if (other.tag == "Ship")
         {
             currentTile = other.transform.gameObject;
+            if (currentTile.GetComponent<Health>().health != 2)
+            {
+                canBuild = false;
+
+            }
+            if (currentTile.GetComponent<Health>().health == 2)
+            {
+                canRepair = false;
+            }
+            else
+            {
+                canRepair = true;
+            }
         }
 
 

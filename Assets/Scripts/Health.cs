@@ -12,7 +12,7 @@ public class Health : MonoBehaviour
     public Sprite woodsides;
 
     private SpriteRenderer spriteRenderer;
-    int health = 2;
+    public int health = 2;
     // Start is called before the first frame update
     void Start()
     {
