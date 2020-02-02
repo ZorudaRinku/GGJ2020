@@ -7,8 +7,6 @@ public class Movement : MonoBehaviour
 {
     public static bool Canmove = true;
     public static bool isdead = false;
-    [SerializeField]
-    GameObject positionTester;
     private IEnumerator coroutine;
     // Start is called before the first frame update
     void Start()
@@ -91,8 +89,7 @@ public class Movement : MonoBehaviour
     {
         if (other.tag == "Ship")
         {
-            Movement.Canmove = false;
-
+            transform.position = new Vector3(1.5f, -4.5f, 0f);
         }
 
     }
