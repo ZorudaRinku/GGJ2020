@@ -137,6 +137,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RP Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3620616375537823534, guid: 917f3c7d70670d945b15e94ad60bee1b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 3620616375537823535, guid: 917f3c7d70670d945b15e94ad60bee1b,
         type: 3}
       propertyPath: m_SortingLayerID
