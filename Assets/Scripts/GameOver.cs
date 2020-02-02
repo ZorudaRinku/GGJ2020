@@ -7,6 +7,8 @@ public class GameOver : MonoBehaviour
 { 
     public void Restart()
     {
+        gameManager.coins = 1500;
+        TurretManager.cannons = new List<GameObject>();
         SceneManager.LoadScene("Scene 2");
         gameManager.gameover = false;
     }
