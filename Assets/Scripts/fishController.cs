@@ -14,6 +14,8 @@ public class fishController : MonoBehaviour
 
     [SerializeField] float attackSpeedSeconds = 3;
 
+    [SerializeField] GameObject coin;
+
     bool noHeart = false;
     //used for aiming at heart
     Vector3 targetDirection;
@@ -22,11 +24,11 @@ public class fishController : MonoBehaviour
     void Awake() 
     {
         transform.Rotate(0, 0, 0, Space.World);
-        if (GameObject.FindGameObjectWithTag("Respawn") != null)//yo dumbass rememeber to change this
+        if (GameObject.FindGameObjectWithTag("Heart") != null)//yo dumbass rememeber to change this
         {
             noHeart = false;
 
-            heartShip = GameObject.FindGameObjectWithTag("Respawn"); //yo dumbass remember to change this
+            heartShip = GameObject.FindGameObjectWithTag("Heart"); //yo dumbass remember to change this
 
             // Determine which direction to rotate towards
             targetDirection = heartShip.transform.position - transform.position;
@@ -102,12 +104,12 @@ public class fishController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D fishCollision)
     {
-        if (fishCollision.transform.tag == "Finish")//destroys both fish and ship tile
+        if (fishCollision.transform.tag == "Ship")//destroys both fish and ship tile
         {
             Destroy(fishCollision.transform.gameObject);
             Destroy(gameObject);
         }
-        else if (fishCollision.transform.tag == "Respawn")//game ends when it kills the heart
+        else if (fishCollision.transform.tag == "Heart")//game ends when it kills the heart
         {
             /*
             Destroy(fishCollision.transform.gameObject);
@@ -115,9 +117,14 @@ public class fishController : MonoBehaviour
             Debug.Log("Will end game and restart to menu");
             */
         }
-        else if (fishCollision.transform.tag == "bullet")//gives coins when killed with cannons
+    }
+
+    void OnTriggerEnter2D (Collider2D other)
+    {
+        if (other.transform.tag == "Bullet")//gives coins when killed with cannons
         {
-            
+            Instantiate(coin, transform.position, transform.rotation);
+            Destroy(gameObject);
         }
     }
 
