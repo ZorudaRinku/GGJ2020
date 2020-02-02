@@ -18,6 +18,8 @@ public class fishController : MonoBehaviour
 
     [SerializeField] GameObject coin;
 
+    [SerializeField] GameObject gameover;
+
     bool noHeart = false;
     //used for aiming at heart
     Vector3 targetDirection;
@@ -112,10 +114,8 @@ public class fishController : MonoBehaviour
         }
         else if (fishCollision.transform.tag == "Heart")//game ends when it kills the heart
         {
-            
-            SceneManager.LoadScene(2);
-
-
+            Time.timeScale = 0.4f;
+            gameManager.gameover = true;
         }
     }
 
