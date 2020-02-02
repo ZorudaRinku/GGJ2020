@@ -33,7 +33,7 @@ public class TurretManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.KeypadPlus) | Input.GetKeyDown(KeyCode.RightControl)) 
+        if (Input.GetKeyDown(KeyCode.KeypadPlus) || Input.GetKeyDown(KeyCode.RightControl)) 
         {
             anchorMode = !anchorMode;
             turretMode = !turretMode;
@@ -43,7 +43,7 @@ public class TurretManager : MonoBehaviour
         }
         if (turretMode)
         {
-            if (Input.GetKeyDown(KeyCode.KeypadEnter) && canShoot | Input.GetKeyDown(KeyCode.RightShift) && canShoot)
+            if (Input.GetKeyDown(KeyCode.KeypadEnter) && canShoot || Input.GetKeyDown(KeyCode.RightShift) && canShoot)
             {
                 Instantiate(Bullet, currentCannon.transform.position, transform.rotation);
                 canShoot = false;

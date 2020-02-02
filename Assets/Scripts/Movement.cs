@@ -139,9 +139,6 @@ public class Movement : MonoBehaviour
             buildTimerCannon = 380;
             repairtimer = 30;
             foreach (GameObject build in GameObject.FindGameObjectsWithTag("Build"))
-=======
-            if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.Space) | Input.GetKey(KeyCode.Q))
->>>>>>> 38dd801cfdff5ca0d7839e76dc89865ac2c6fdc0
             {
                 Destroy(build);
             }
@@ -154,27 +151,27 @@ public class Movement : MonoBehaviour
         {
             foreach (GameObject build in GameObject.FindGameObjectsWithTag("Build"))
 =======
-            else if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.Space) | Input.GetKey(KeyCode.E))
+
             {
                 buildTimerRight--;
             }
-            else if (Input.GetKey(KeyCode.Space) | Input.GetKey(KeyCode.R))
+            else if (Input.GetKey(KeyCode.Space) )
 >>>>>>> 38dd801cfdff5ca0d7839e76dc89865ac2c6fdc0
             {
                 Destroy(build);
             }
         }
 
-        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.Space))
+        if ((Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.Space)) || Input.GetKey(KeyCode.Q))
         {
             buildTimerLeft--;
         }
 
-        else if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.Space))
+        else if ((Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.Space)) || Input.GetKey(KeyCode.E))
         {
             buildTimerRight--;
         }
-        else if (Input.GetKey(KeyCode.Space) && currentTile.GetComponent<Health>().health == 2 && !repairing)
+        else if ((Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.R)) && currentTile.GetComponent<Health>().health == 2 && !repairing)
         {
             Debug.Log(buildTimerCannon);
             buildTimerCannon--;
