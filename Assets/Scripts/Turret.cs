@@ -53,11 +53,4 @@ public class Turret : MonoBehaviour
         this.GetComponent<SpriteRenderer>().color = currentColor;
        
     }
-    void OnTriggerExit2D(Collider2D other)
-    {
-
-        Destroy(gameObject);
-
-
-    }
 }

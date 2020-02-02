@@ -40,7 +40,7 @@ public class fishSpawner : MonoBehaviour
         Debug.Log(spawnMultiplier);
 
         //spawn fish in a semicircle from the heart to the water
-        // code found from forum https://answers.unity.com/questions/714835/best-way-to-spawn-prefabs-in-a-circle.html 
+        //code found from forum https://answers.unity.com/questions/714835/best-way-to-spawn-prefabs-in-a-circle.html 
         Vector3 center = heartShip.position;
         float spawnRadius = Random.Range(spawnRadiusLow, spawnRadiusHigh);
         Vector3 position = RandomCircle(center, spawnRadius);
