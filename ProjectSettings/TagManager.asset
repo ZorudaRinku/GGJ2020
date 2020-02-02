@@ -8,6 +8,7 @@ TagManager:
   - Ship
   - Heart
   - Bullet
+  - Build
   layers:
   - Default
   - TransparentFX

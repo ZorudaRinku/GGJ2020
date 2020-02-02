@@ -1,13 +1,19 @@
 fileFormatVersion: 2
-guid: 31517c8ab2691694e9db9821b11d8e04
+guid: 479b8c067e1140a478b1114540ee65be
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7985236584873897778
-    second: donttalktomeormyson_0
+      213: 7086700193747018192
+    second: waterSpritemap_0
   - first:
-      213: 5167201361975955488
-    second: donttalktomeormyson_1
+      213: -7647015276173864949
+    second: waterSpritemap_1
+  - first:
+      213: 401511381495488725
+    second: waterSpritemap_2
+  - first:
+      213: 1588641524860285854
+    second: waterSpritemap_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -38,7 +44,7 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: -1
-    aniso: -1
+    aniso: 1
     mipBias: -100
     wrapU: 1
     wrapV: 1
@@ -92,7 +98,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: donttalktomeormyson_0
+      name: waterSpritemap_0
       rect:
         serializedVersion: 2
         x: 0
@@ -100,35 +106,77 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec0532732adbe2190800000000000000
-      internalID: -7985236584873897778
+      spriteID: 0d1abfd7744095260800000000000000
+      internalID: 7086700193747018192
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: donttalktomeormyson_1
+      name: waterSpritemap_1
       rect:
         serializedVersion: 2
         x: 128
         y: 0
         width: 128
         height: 128
-      alignment: 9
-      pivot: {x: 0.52216697, y: 0.5277086}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 020dd7ff24695b740800000000000000
-      internalID: 5167201361975955488
+      spriteID: b00dba73f1850e590800000000000000
+      internalID: -7647015276173864949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: waterSpritemap_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d0a0536974729500800000000000000
+      internalID: 401511381495488725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: waterSpritemap_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e937bb4cc0dfb0610800000000000000
+      internalID: 1588641524860285854
       vertices: []
       indices: 
       edges: []
