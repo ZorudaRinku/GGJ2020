@@ -67,9 +67,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -662259749
+  m_SortingLayer: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: -4488915054022439280, guid: 6c48df7c4f3cb03438ff5a4e509dd128,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 6739872211249328655}
   m_Layer: 0
   m_Name: BuildingThing
-  m_TagString: Untagged
+  m_TagString: Build
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
