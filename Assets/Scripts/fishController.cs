@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class fishController : MonoBehaviour
 {
@@ -111,11 +113,10 @@ public class fishController : MonoBehaviour
         }
         else if (fishCollision.transform.tag == "Heart")//game ends when it kills the heart
         {
-            /*
-            Destroy(fishCollision.transform.gameObject);
-            Destroy(gameObject);
-            Debug.Log("Will end game and restart to menu");
-            */
+            
+            SceneManager.LoadScene(2);
+
+
         }
     }
 
