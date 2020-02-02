@@ -70,6 +70,7 @@ MonoBehaviour:
   thrust: 50
   rotateSpeed: 10
   attackSpeedSeconds: 3
+  coin: {fileID: 6545161673698616808, guid: f096a6851cfe65f4cb5b5494552b9397, type: 3}
 --- !u!58 &1733783887701378528
 CircleCollider2D:
   m_ObjectHideFlags: 0

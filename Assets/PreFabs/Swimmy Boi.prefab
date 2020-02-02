@@ -86,6 +86,7 @@ MonoBehaviour:
   thrust: 50
   rotateSpeed: 10
   attackSpeedSeconds: 3
+  coin: {fileID: 6545161673698616808, guid: f096a6851cfe65f4cb5b5494552b9397, type: 3}
 --- !u!1 &5668400494641063206
 GameObject:
   m_ObjectHideFlags: 0
