@@ -8,9 +8,9 @@ public class Movement : MonoBehaviour
     public static bool Canmove = true;
     public static bool isdead = false;
     private IEnumerator coroutine;
-    public static int buildTimerLeft = 120;
-    public static int buildTimerRight = 120;
-    public static int buildTimerCannon = 480;
+    int buildTimerLeft = 90;
+    int buildTimerRight = 90;
+    int buildTimerCannon = 380;
     GameObject currentTile;
     [SerializeField]
     GameObject newTile;
@@ -123,9 +123,9 @@ public class Movement : MonoBehaviour
 
             if (Input.GetKeyUp(KeyCode.Space))
             {
-                buildTimerLeft = 120;
-                buildTimerRight = 120;
-                buildTimerCannon = 480;
+                buildTimerLeft = 90;
+                buildTimerRight = 90;
+                buildTimerCannon = 380;
                 foreach (GameObject build in GameObject.FindGameObjectsWithTag("Build"))
                 {
                     Destroy(build);
@@ -152,20 +152,21 @@ public class Movement : MonoBehaviour
             }
             else if (Input.GetKey(KeyCode.Space))
             {
+                Debug.Log(buildTimerCannon);
                 buildTimerCannon--;
             }
 
-            if (buildTimerCannon == 479 && gameManager.coins >= 1500)
+            if (buildTimerCannon == 379 && gameManager.coins >= 1500)
             {
                 Instantiate(Building, new Vector3(transform.position.x, transform.position.y, 0), transform.rotation);
             }
 
-            if (buildTimerLeft == 119 && gameManager.coins >= 500)
+            if (buildTimerLeft == 89 && gameManager.coins >= 500)
             {
                 Instantiate(Building, new Vector3(transform.position.x - 1, transform.position.y, 0), transform.rotation);
             }
 
-            if (buildTimerRight == 119 && gameManager.coins >= 500)
+            if (buildTimerRight == 89 && gameManager.coins >= 500)
             {
                 Instantiate(Building, new Vector3(transform.position.x + 1, transform.position.y, 0), transform.rotation);
             }
@@ -176,7 +177,7 @@ public class Movement : MonoBehaviour
     private IEnumerator Wait(float waitTime)
     {
         Instantiate(newCannon, new Vector3(transform.position.x, transform.position.y, 0), transform.rotation);
-        buildTimerCannon = 480;
+        buildTimerCannon = 380;
 
         yield return new WaitForSeconds(waitTime);
 
