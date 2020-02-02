@@ -73,9 +73,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite1: {fileID: 21300000, guid: 605cdddaeb2ed38469958eabfc5b5ceb, type: 3}
-  woodleft: {fileID: 21300000, guid: d08c8282674316e41853f51f7157f90c, type: 3}
-  woodright: {fileID: 21300000, guid: d145b9b9b57d68e409843bf159ff9756, type: 3}
-  woodcenter: {fileID: 21300000, guid: 8edfd30e6b4c99e4a9d1de19cf611090, type: 3}
+  woodleft: {fileID: 21300000, guid: 990bc3077ffc0bd4ab2ca088526380d6, type: 3}
+  woodright: {fileID: 21300000, guid: e5ee675f1e71f2249911e1c402071fc9, type: 3}
+  woodcenter: {fileID: 21300000, guid: 8f4297dad998cfa489b35d0422bc1044, type: 3}
+  woodsides: {fileID: 21300000, guid: 8edfd30e6b4c99e4a9d1de19cf611090, type: 3}
 --- !u!212 &8014336210020637409
 SpriteRenderer:
   m_ObjectHideFlags: 0
