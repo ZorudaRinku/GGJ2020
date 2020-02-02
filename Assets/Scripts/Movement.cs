@@ -131,6 +131,7 @@ public class Movement : MonoBehaviour
             }
         }
 
+<<<<<<< HEAD
         if (Input.GetKeyUp(KeyCode.Space))
         {
             buildTimerLeft = 90;
@@ -138,7 +139,9 @@ public class Movement : MonoBehaviour
             buildTimerCannon = 380;
             repairtimer = 30;
             foreach (GameObject build in GameObject.FindGameObjectsWithTag("Build"))
+=======
             if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.Space) | Input.GetKey(KeyCode.Q))
+>>>>>>> 38dd801cfdff5ca0d7839e76dc89865ac2c6fdc0
             {
                 Destroy(build);
             }
@@ -146,14 +149,17 @@ public class Movement : MonoBehaviour
             repairing = false;
         }
 
+<<<<<<< HEAD
         if (buildTimerRight == 0 || buildTimerLeft == 0 || buildTimerCannon == 1 || repairtimer == 1)
         {
             foreach (GameObject build in GameObject.FindGameObjectsWithTag("Build"))
+=======
             else if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.Space) | Input.GetKey(KeyCode.E))
             {
                 buildTimerRight--;
             }
             else if (Input.GetKey(KeyCode.Space) | Input.GetKey(KeyCode.R))
+>>>>>>> 38dd801cfdff5ca0d7839e76dc89865ac2c6fdc0
             {
                 Destroy(build);
             }
