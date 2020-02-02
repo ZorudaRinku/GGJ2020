@@ -37,7 +37,7 @@ public class TurretManager : MonoBehaviour
         {
             anchorMode = !anchorMode;
             turretMode = !turretMode;
-            Debug.Log(anchorMode + " " + turretMode);
+
             
 
         }
@@ -59,6 +59,7 @@ public class TurretManager : MonoBehaviour
                 else
                 {
                     currentCannon = cannons[currentCannonIndex - 1];
+                    currentCannonIndex--;
                 }
             }
             if (Input.GetKeyDown(KeyCode.Keypad3))
@@ -71,6 +72,7 @@ public class TurretManager : MonoBehaviour
                 else
                 {
                     currentCannon = cannons[currentCannonIndex + 1];
+                    currentCannonIndex++;
                 }
             }
           

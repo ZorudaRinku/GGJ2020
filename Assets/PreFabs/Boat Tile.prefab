@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7730160421678620580}
   m_Layer: 0
   m_Name: Boat Tile
-  m_TagString: Finish
+  m_TagString: Ship
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
