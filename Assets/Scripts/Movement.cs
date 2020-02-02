@@ -115,8 +115,19 @@ public class Movement : MonoBehaviour
                 buildTimerLeft = 120;
                 buildTimerRight = 120;
                 buildTimerCannon = 480;
-                Destroy(GameObject.FindGameObjectWithTag("Build"));
+                foreach (GameObject build in GameObject.FindGameObjectsWithTag("Build"))
+                {
+                    Destroy(build);
+                }
                 canBuild = true;
+            }
+
+            if (buildTimerRight == 0 || buildTimerLeft == 0 || buildTimerCannon == 1)
+            {
+                foreach (GameObject build in GameObject.FindGameObjectsWithTag("Build"))
+                {
+                    Destroy(build);
+                }
             }
 
             if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.Space))
