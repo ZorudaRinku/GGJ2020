@@ -77,6 +77,7 @@ MonoBehaviour:
   woodright: {fileID: 21300000, guid: e5ee675f1e71f2249911e1c402071fc9, type: 3}
   woodcenter: {fileID: 21300000, guid: 8f4297dad998cfa489b35d0422bc1044, type: 3}
   woodsides: {fileID: 21300000, guid: 8edfd30e6b4c99e4a9d1de19cf611090, type: 3}
+  health: 2
 --- !u!212 &8014336210020637409
 SpriteRenderer:
   m_ObjectHideFlags: 0
