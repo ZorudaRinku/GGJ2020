@@ -11,11 +11,14 @@ public class Movement : MonoBehaviour
     int buildTimerLeft = 90;
     int buildTimerRight = 90;
     int buildTimerCannon = 380;
+    int repairtimer = 30;
     GameObject currentTile;
     [SerializeField]
     GameObject newTile;
     [SerializeField]
     GameObject newCannon;
+    [SerializeField]
+    GameObject RepairTile;
     bool canBuild = true;
     bool canRepair = true;
     [SerializeField]
@@ -109,15 +112,19 @@ public class Movement : MonoBehaviour
                 }
                 if (buildTimerCannon <= 0 && gameManager.coins >= 1500)
                 {
-
                         canBuild = false;
                         gameManager.coins -= 1500;
                         StartCoroutine(Wait(3));
-                    
-
-
-
-
+                }
+            }
+            if(canRepair)
+            {
+                if(Input.GetKeyUp(KeyCode.Space))
+                {
+                    if (currentTile.GetComponent<Health>().health == 1 && repairtimer <= 0)
+                    {
+                        currentTile.GetComponent<Health>().health += 1;
+                    }
                 }
             }
 
@@ -209,6 +216,15 @@ public class Movement : MonoBehaviour
             if (currentTile.GetComponent<Health>().health != 2)
             {
                 canBuild = false;
+
+            }
+            if (currentTile.GetComponent<Health>().health == 2)
+            {
+                canRepair = false;
+            }
+            else
+            {
+                canRepair = true;
             }
         }
 
