@@ -148,16 +148,16 @@ public class Movement : MonoBehaviour
                 }
             }
 
-            if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.Space))
+            if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.Space) | Input.GetKey(KeyCode.Q))
             {
                 buildTimerLeft--;
             }
 
-            else if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.Space))
+            else if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.Space) | Input.GetKey(KeyCode.E))
             {
                 buildTimerRight--;
             }
-            else if (Input.GetKey(KeyCode.Space))
+            else if (Input.GetKey(KeyCode.Space) | Input.GetKey(KeyCode.R))
             {
                 Debug.Log(buildTimerCannon);
                 buildTimerCannon--;
