@@ -94,6 +94,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c415cb67542ec3447b225ee6ad9d3ac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newTile: {fileID: 0}
-  newCannon: {fileID: 0}
-  Building: {fileID: 0}
+  newTile: {fileID: 7730160421678620581, guid: c7208a79fd305274eadc682aa3a65038, type: 3}
+  newCannon: {fileID: 9014661554878913454, guid: a151a6834278e274c91f73c04c8f387e,
+    type: 3}
+  Building: {fileID: 8577015806577256264, guid: 66a972346ce82404191f8f8d5d606a27,
+    type: 3}
+  healthref: {fileID: 0}

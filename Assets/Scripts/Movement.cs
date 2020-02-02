@@ -17,8 +17,10 @@ public class Movement : MonoBehaviour
     [SerializeField]
     GameObject newCannon;
     bool canBuild = true;
+    bool canRepair = true;
     [SerializeField]
     GameObject Building;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -80,8 +82,11 @@ public class Movement : MonoBehaviour
                     transform.position = new Vector2(transform.position.x, transform.position.y - 1);
                 }
             }
+            //GameObject tile = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y), 0.2f).gameObject;
+
             if (canBuild)
             {
+
                 if (buildTimerLeft <= 0 && gameManager.coins >= 500)
                 {
                     if (Physics2D.OverlapCircle(new Vector2(transform.position.x - 1, transform.position.y), 0.2f) == null)
@@ -104,9 +109,15 @@ public class Movement : MonoBehaviour
                 }
                 if (buildTimerCannon <= 0 && gameManager.coins >= 1500)
                 {
-                    canBuild = false;
-                    gameManager.coins -= 1500;
-                    StartCoroutine(Wait(3));
+
+                        canBuild = false;
+                        gameManager.coins -= 1500;
+                        StartCoroutine(Wait(3));
+                    
+
+
+
+
                 }
             }
 
@@ -194,6 +205,10 @@ public class Movement : MonoBehaviour
         if (other.tag == "Ship")
         {
             currentTile = other.transform.gameObject;
+            if (currentTile.GetComponent<Health>().health != 2)
+            {
+                canBuild = false;
+            }
         }
 
 
