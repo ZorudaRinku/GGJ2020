@@ -59,16 +59,6 @@ public class Movement : MonoBehaviour
 
 
             }
-
-
-
-
-
-
-
-
-
-
             if (Input.GetKeyDown(KeyCode.D))
             {
                 if (Physics2D.OverlapCircle(new Vector2(transform.position.x + 1, transform.position.y), 0.2f) != null)

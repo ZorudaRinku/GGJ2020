@@ -108,7 +108,6 @@ public class fishController : MonoBehaviour
     {
         if (fishCollision.transform.tag == "Ship")//destroys both fish and ship tile
         {
-            Destroy(fishCollision.transform.gameObject);
             Destroy(gameObject);
         }
         else if (fishCollision.transform.tag == "Heart")//game ends when it kills the heart

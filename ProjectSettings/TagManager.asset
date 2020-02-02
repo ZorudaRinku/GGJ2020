@@ -9,6 +9,7 @@ TagManager:
   - Heart
   - Bullet
   - Build
+  - Enemy
   layers:
   - Default
   - TransparentFX
