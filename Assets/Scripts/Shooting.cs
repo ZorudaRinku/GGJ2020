@@ -11,7 +11,7 @@ public class Shooting : MonoBehaviour
     void Start()
     {
         Vector3 bulletForce = TurretManager.currentCannon.transform.up * speed;
-        Debug.Log(TurretManager.currentCannon.transform.forward);
+
         GetComponent<Rigidbody2D>().velocity = bulletForce;
     }
 

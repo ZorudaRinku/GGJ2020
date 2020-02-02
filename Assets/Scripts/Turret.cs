@@ -5,7 +5,7 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
     Vector3 rotationTool = new Vector3();
-    float rotationValue = 1;
+    float rotationValue = 0.5f;
     Color currentColor;
     
     void Start()

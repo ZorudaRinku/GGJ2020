@@ -8,7 +8,7 @@ public class gameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        coins = 1500;
     }
 
     // Update is called once per frame

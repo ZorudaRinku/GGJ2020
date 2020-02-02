@@ -16,6 +16,7 @@ public class Movement : MonoBehaviour
     GameObject newTile;
     [SerializeField]
     GameObject newCannon;
+    bool canBuild = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +26,7 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(currentTile);
+
 
         //float moveHorizontal = Input.GetAxis("Horizontal");
         //float moveVertical = Input.GetAxis("Vertical");
@@ -87,39 +88,49 @@ public class Movement : MonoBehaviour
                     transform.position = new Vector2(transform.position.x, transform.position.y - 1);
                 }
             }
-
-            if (buildTimerLeft <= 0)
+            if (canBuild)
             {
-                if (Physics2D.OverlapCircle(new Vector2(transform.position.x - 1, transform.position.y), 0.2f) == null)
+                if (buildTimerLeft <= 0 && gameManager.coins >= 500)
                 {
-                    Instantiate(newTile, new Vector3(transform.position.x - 1, transform.position.y, 0), transform.rotation);
-                }
+                    if (Physics2D.OverlapCircle(new Vector2(transform.position.x - 1, transform.position.y), 0.2f) == null)
+                    {
+                        Instantiate(newTile, new Vector3(transform.position.x - 1, transform.position.y, 0), transform.rotation);
+                        canBuild = false;
+                        gameManager.coins -= 500;
+                    }
 
-            }
-            if (buildTimerRight <= 0)
-            {
-                if (Physics2D.OverlapCircle(new Vector2(transform.position.x + 1, transform.position.y), 0.2f) == null)
+                }
+                if (buildTimerRight <= 0 && gameManager.coins >= 500)
                 {
-                    Instantiate(newTile, new Vector3(transform.position.x + 1, transform.position.y, 0), transform.rotation);
+                    if (Physics2D.OverlapCircle(new Vector2(transform.position.x + 1, transform.position.y), 0.2f) == null)
+                    {
+                        Instantiate(newTile, new Vector3(transform.position.x + 1, transform.position.y, 0), transform.rotation);
+                        canBuild = false;
+                        gameManager.coins -= 500;
+                    }
+
                 }
+                if (buildTimerCannon <= 0 && gameManager.coins >= 1500)
+                {
 
+
+                    canBuild = false;
+                    gameManager.coins -= 1500;
+                    StartCoroutine(Wait(3));
+
+
+
+
+
+                }
             }
-            if (buildTimerCannon <= 0)
-            {
-
-                
-
-                StartCoroutine(Wait(3));
-                
-
-
-
-            }
+            
             if (Input.GetKeyUp(KeyCode.Space))
             {
                 buildTimerLeft = 120;
                 buildTimerRight = 120;
-                buildTimerCannon = 120;
+                buildTimerCannon = 480;
+                canBuild = true;
             }
 
             if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.Space))
@@ -145,6 +156,7 @@ public class Movement : MonoBehaviour
     {
         Instantiate(newCannon, new Vector3(transform.position.x, transform.position.y, 0), transform.rotation);
         buildTimerCannon = 480;
+        
         yield return new WaitForSeconds(waitTime);
 
 
@@ -168,7 +180,7 @@ public class Movement : MonoBehaviour
     */
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Colliding with tile");
+
         if (other.tag == "Ship")
         {
             currentTile = other.transform.gameObject;

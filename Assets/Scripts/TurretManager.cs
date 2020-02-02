@@ -37,7 +37,7 @@ public class TurretManager : MonoBehaviour
         {
             anchorMode = !anchorMode;
             turretMode = !turretMode;
-            Debug.Log(anchorMode + " " + turretMode);
+
             
 
         }
