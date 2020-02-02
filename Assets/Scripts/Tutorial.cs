@@ -24,6 +24,7 @@ public class Tutorial : MonoBehaviour
     public void Next()
     {
         if (page + 1 == TutorialTexts.Length)
+        {
             this.gameObject.SetActive(false);
             MainMenu.gameObject.SetActive(true);
         }
