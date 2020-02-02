@@ -24,7 +24,7 @@ public class fishController : MonoBehaviour
         transform.Rotate(0, 0, 0, Space.World);
         if (GameObject.FindGameObjectWithTag("Respawn") != null)//yo dumbass rememeber to change this
         {
-            noHeart = true;
+            noHeart = false;
 
             heartShip = GameObject.FindGameObjectWithTag("Respawn"); //yo dumbass remember to change this
 
@@ -49,7 +49,7 @@ public class fishController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (noHeart)
+        if (!noHeart)
         {
             //Change rotation towards heart
             // Determine which direction to rotate towards
@@ -60,6 +60,31 @@ public class fishController : MonoBehaviour
             Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
             // Draw a ray pointing at our target in
             //Debug.DrawRay(transform.position, newDirection, Color.red);
+
+            ///FISH GRAVITY///
+            /*
+            if (transform.position.y > heartShip.transform.position.y)
+            {
+                rb2D.gravityScale = 5;
+            }
+            else
+            {
+                rb2D.gravityScale = 0;
+            }
+            */
+            ///FISH GRAVITY///
+
+            if (transform.position.x > heartShip.transform.position.x)
+            {
+
+                transform.localScale = new Vector3(-1, 1, 1);//faces left
+            }
+            else
+            {
+                transform.localScale = new Vector3(1, 1, 1);//faces right
+            }
+
+            rb2D.AddForce(transform.forward * thrust );
         }
     }
 
