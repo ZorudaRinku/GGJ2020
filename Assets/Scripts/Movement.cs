@@ -138,6 +138,7 @@ public class Movement : MonoBehaviour
             buildTimerCannon = 380;
             repairtimer = 30;
             foreach (GameObject build in GameObject.FindGameObjectsWithTag("Build"))
+            if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.Space) | Input.GetKey(KeyCode.Q))
             {
                 Destroy(build);
             }
@@ -148,6 +149,11 @@ public class Movement : MonoBehaviour
         if (buildTimerRight == 0 || buildTimerLeft == 0 || buildTimerCannon == 1 || repairtimer == 1)
         {
             foreach (GameObject build in GameObject.FindGameObjectsWithTag("Build"))
+            else if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.Space) | Input.GetKey(KeyCode.E))
+            {
+                buildTimerRight--;
+            }
+            else if (Input.GetKey(KeyCode.Space) | Input.GetKey(KeyCode.R))
             {
                 Destroy(build);
             }
