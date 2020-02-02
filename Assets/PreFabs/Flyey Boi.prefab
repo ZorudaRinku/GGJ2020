@@ -64,12 +64,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1733783887701378532}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34311b00db6ea6a4896bdc89d5543a11, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c625e8cd401ec14c879c0b08460ff3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 100
+  thrust: 50
   rotateSpeed: 10
-  attackSpeedSeconds: 5
+  attackSpeedSeconds: 3
 --- !u!58 &1733783887701378528
 CircleCollider2D:
   m_ObjectHideFlags: 0
