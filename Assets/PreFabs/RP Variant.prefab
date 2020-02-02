@@ -71,6 +71,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9014661554878913454, guid: a151a6834278e274c91f73c04c8f387e,
         type: 3}
+    - target: {fileID: 2236988367993211558, guid: 917f3c7d70670d945b15e94ad60bee1b,
+        type: 3}
+      propertyPath: Building
+      value: 
+      objectReference: {fileID: 8577015806577256264, guid: 66a972346ce82404191f8f8d5d606a27,
+        type: 3}
     - target: {fileID: 3620616375537823528, guid: 917f3c7d70670d945b15e94ad60bee1b,
         type: 3}
       propertyPath: m_LocalPosition.x

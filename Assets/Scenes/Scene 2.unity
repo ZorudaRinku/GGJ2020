@@ -291,6 +291,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1808310682}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1201957637 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9014661554878913454, guid: a151a6834278e274c91f73c04c8f387e,
+    type: 3}
+  m_PrefabInstance: {fileID: 2013114487}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1520376140
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,7 +327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turret: {fileID: 9014661554878913454, guid: a151a6834278e274c91f73c04c8f387e, type: 3}
-  cannonParent: {fileID: 0}
+  cannonParent: {fileID: 1201957637}
   Bullet: {fileID: 9209309701580011670, guid: 361dca436e7aea145827e4bfed438f9c, type: 3}
 --- !u!4 &1520376142
 Transform:
@@ -422,6 +428,7 @@ GameObject:
   - component: {fileID: 1959752053}
   - component: {fileID: 1959752052}
   - component: {fileID: 1959752051}
+  - component: {fileID: 1959752054}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -494,6 +501,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1959752054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959752050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90ac9be0d822f18469083269ca9b9868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1975337056
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -17,6 +17,8 @@ public class Movement : MonoBehaviour
     [SerializeField]
     GameObject newCannon;
     bool canBuild = true;
+    [SerializeField]
+    GameObject Building;
     // Start is called before the first frame update
     void Start()
     {
@@ -57,16 +59,6 @@ public class Movement : MonoBehaviour
 
 
             }
-
-
-
-
-
-
-
-
-
-
             if (Input.GetKeyDown(KeyCode.D))
             {
                 if (Physics2D.OverlapCircle(new Vector2(transform.position.x + 1, transform.position.y), 0.2f) != null)
@@ -112,24 +104,18 @@ public class Movement : MonoBehaviour
                 }
                 if (buildTimerCannon <= 0 && gameManager.coins >= 1500)
                 {
-
-
                     canBuild = false;
                     gameManager.coins -= 1500;
                     StartCoroutine(Wait(3));
-
-
-
-
-
                 }
             }
-            
+
             if (Input.GetKeyUp(KeyCode.Space))
             {
                 buildTimerLeft = 120;
                 buildTimerRight = 120;
                 buildTimerCannon = 480;
+                Destroy(GameObject.FindGameObjectWithTag("Build"));
                 canBuild = true;
             }
 
@@ -147,7 +133,20 @@ public class Movement : MonoBehaviour
                 buildTimerCannon--;
             }
 
+            if (buildTimerCannon == 479 && gameManager.coins >= 1500)
+            {
+                Instantiate(Building, new Vector3(transform.position.x, transform.position.y, 0), transform.rotation);
+            }
 
+            if (buildTimerLeft == 119 && gameManager.coins >= 500)
+            {
+                Instantiate(Building, new Vector3(transform.position.x - 1, transform.position.y, 0), transform.rotation);
+            }
+
+            if (buildTimerRight == 119 && gameManager.coins >= 500)
+            {
+                Instantiate(Building, new Vector3(transform.position.x + 1, transform.position.y, 0), transform.rotation);
+            }
         }
 
     }
@@ -156,7 +155,7 @@ public class Movement : MonoBehaviour
     {
         Instantiate(newCannon, new Vector3(transform.position.x, transform.position.y, 0), transform.rotation);
         buildTimerCannon = 480;
-        
+
         yield return new WaitForSeconds(waitTime);
 
 

@@ -8,6 +8,8 @@ TagManager:
   - Ship
   - Heart
   - Bullet
+  - Build
+  - Enemy
   layers:
   - Default
   - TransparentFX
