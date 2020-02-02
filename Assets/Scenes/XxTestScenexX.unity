@@ -3936,7 +3936,8 @@ MonoBehaviour:
   spawnMultiplier: 1
   fishPrefab: {fileID: 5668400494004388636, guid: 28f5f6a3d54a32941bdd0de6473ddbd2,
     type: 3}
-  heartShip: {fileID: 1519045179}
+  heartShip: {fileID: 3110620215960588927, guid: 5bd18c7a3a5cdb24296a929dbf62e01b,
+    type: 3}
 --- !u!114 &1309579815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3956,7 +3957,8 @@ MonoBehaviour:
   spawnMultiplier: 1
   birbPrefab: {fileID: 1733783887701378532, guid: 79f5f9b9972aae645ba6bb846a3841ae,
     type: 3}
-  heartShip: {fileID: 1519045179}
+  heartShip: {fileID: 3110620215960588927, guid: 5bd18c7a3a5cdb24296a929dbf62e01b,
+    type: 3}
 --- !u!114 &1309579816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4409,12 +4411,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!4 &1519045179 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3110620215960588927, guid: 5bd18c7a3a5cdb24296a929dbf62e01b,
-    type: 3}
-  m_PrefabInstance: {fileID: 3110620217142679620}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1519978097
 GameObject:
   m_ObjectHideFlags: 0

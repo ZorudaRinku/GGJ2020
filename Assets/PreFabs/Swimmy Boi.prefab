@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5668400494004388634}
   - component: {fileID: 5668400494004388635}
-  - component: {fileID: 5668400494004388633}
   - component: {fileID: 5668400494004388632}
+  - component: {fileID: 6968426349361749890}
   m_Layer: 0
   m_Name: Swimmy Boi
   m_TagString: Untagged
@@ -55,21 +55,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &5668400494004388633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5668400494004388636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34311b00db6ea6a4896bdc89d5543a11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thrust: 50
-  rotateSpeed: 10
-  attackSpeedSeconds: 4
 --- !u!58 &5668400494004388632
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -86,6 +71,21 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.11
+--- !u!114 &6968426349361749890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5668400494004388636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c625e8cd401ec14c879c0b08460ff3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thrust: 50
+  rotateSpeed: 10
+  attackSpeedSeconds: 3
 --- !u!1 &5668400494641063206
 GameObject:
   m_ObjectHideFlags: 0
