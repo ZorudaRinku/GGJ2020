@@ -8,6 +8,14 @@ public class Movement : MonoBehaviour
     public static bool Canmove = true;
     public static bool isdead = false;
     private IEnumerator coroutine;
+    public static int buildTimerLeft = 120;
+    public static int buildTimerRight = 120;
+    public static int buildTimerCannon = 480;
+    GameObject currentTile;
+    [SerializeField]
+    GameObject newTile;
+    [SerializeField]
+    GameObject newCannon;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +25,7 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(currentTile);
 
         //float moveHorizontal = Input.GetAxis("Horizontal");
         //float moveVertical = Input.GetAxis("Vertical");
@@ -42,9 +51,21 @@ public class Movement : MonoBehaviour
             {
                 if (Physics2D.OverlapCircle(new Vector2(transform.position.x - 1, transform.position.y), 0.2f) != null)
                 {
-                        transform.position = new Vector2(transform.position.x - 1, transform.position.y);
+                    transform.position = new Vector2(transform.position.x - 1, transform.position.y);
                 }
+
+
             }
+
+
+
+
+
+
+
+
+
+
             if (Input.GetKeyDown(KeyCode.D))
             {
                 if (Physics2D.OverlapCircle(new Vector2(transform.position.x + 1, transform.position.y), 0.2f) != null)
@@ -54,7 +75,7 @@ public class Movement : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.W))
             {
-                if (Physics2D.OverlapCircle(new Vector2(transform.position.x , transform.position.y + 1), 0.2f) != null)
+                if (Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y + 1), 0.2f) != null)
                 {
                     transform.position = new Vector2(transform.position.x, transform.position.y + 1);
                 }
@@ -67,6 +88,53 @@ public class Movement : MonoBehaviour
                 }
             }
 
+            if (buildTimerLeft <= 0)
+            {
+                if (Physics2D.OverlapCircle(new Vector2(transform.position.x - 1, transform.position.y), 0.2f) == null)
+                {
+                    Instantiate(newTile, new Vector3(transform.position.x - 1, transform.position.y, 0), transform.rotation);
+                }
+
+            }
+            if (buildTimerRight <= 0)
+            {
+                if (Physics2D.OverlapCircle(new Vector2(transform.position.x + 1, transform.position.y), 0.2f) == null)
+                {
+                    Instantiate(newTile, new Vector3(transform.position.x + 1, transform.position.y, 0), transform.rotation);
+                }
+
+            }
+            if (buildTimerCannon <= 0)
+            {
+
+                
+
+                StartCoroutine(Wait(3));
+                
+
+
+
+            }
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                buildTimerLeft = 120;
+                buildTimerRight = 120;
+                buildTimerCannon = 120;
+            }
+
+            if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.Space))
+            {
+                buildTimerLeft--;
+            }
+
+            else if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.Space))
+            {
+                buildTimerRight--;
+            }
+            else if (Input.GetKey(KeyCode.Space))
+            {
+                buildTimerCannon--;
+            }
 
 
         }
@@ -75,8 +143,11 @@ public class Movement : MonoBehaviour
 
     private IEnumerator Wait(float waitTime)
     {
-
+        Instantiate(newCannon, new Vector3(transform.position.x, transform.position.y, 0), transform.rotation);
+        buildTimerCannon = 480;
         yield return new WaitForSeconds(waitTime);
+
+
 
 
     }
@@ -85,12 +156,24 @@ public class Movement : MonoBehaviour
     /// if manages to exit the boat, sends to center
     /// </summary>
     /// <param name="other"></param>
-    void OnTriggerExit2D(Collider2D other)
+    /// 
+    /*void OnTriggerExit2D(Collider2D other)
     {
         if (other.tag == "Ship")
         {
             transform.position = new Vector3(1.5f, -4.5f, 0f);
         }
+        
+    }
+    */
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("Colliding with tile");
+        if (other.tag == "Ship")
+        {
+            currentTile = other.transform.gameObject;
+        }
+
 
     }
 

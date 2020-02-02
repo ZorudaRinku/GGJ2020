@@ -39,6 +39,10 @@ public class Turret : MonoBehaviour
                 transform.eulerAngles = new Vector3(transform.eulerAngles.x + rotationTool.x, transform.eulerAngles.y + rotationTool.y, transform.eulerAngles.z + rotationTool.z);
                 currentColor.a = 1;
             }
+            else
+            {
+                currentColor.a = .5f;
+            }
         }
         
         else
