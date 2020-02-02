@@ -4,25 +4,31 @@ using UnityEngine;
 
 public class fishSpawner : MonoBehaviour
 {
-    [SerializeField] float spawnSpeedSecondsLow = 3f;
-    [SerializeField] float spawnSpeedSecondsHigh = 5f;
+    [SerializeField] float spawnSpeedSecondsLow = 9f;
+    [SerializeField] float spawnSpeedSecondsHigh = 15f;
     [SerializeField] float spawnRadiusLow = 5f;
     [SerializeField] float spawnRadiusHigh = 10f;
     [SerializeField] float spawnMultiplier = 1f;
     [SerializeField] GameObject fishPrefab;
     [SerializeField] Transform heartShip;
+    bool canCo = true;
 
     // Start is called before the first frame update
-    IEnumerator Start() //void Start()
+    void Start() //void Start()
     {
-
-        yield return StartCoroutine("waitAndSpawn");
+        spawnMultiplier = 1f;
+        StartCoroutine(waitAndSpawn());
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (canCo)
+        {
+            StartCoroutine(difficultyCurve());
+            canCo = false;
+        }
 
     }
 
@@ -31,6 +37,7 @@ public class fishSpawner : MonoBehaviour
         // start timer for spawnSpeedSeconds divided byt he difficulty multiplier
         float spawnTimeSeconds = Random.Range(spawnSpeedSecondsLow, spawnSpeedSecondsHigh);
         yield return new WaitForSeconds(spawnTimeSeconds / spawnMultiplier);
+        Debug.Log(spawnMultiplier);
 
         //spawn fish in a semicircle from the heart to the water
         // code found from forum https://answers.unity.com/questions/714835/best-way-to-spawn-prefabs-in-a-circle.html 
@@ -43,6 +50,15 @@ public class fishSpawner : MonoBehaviour
 
         // Start function as a coroutine
         yield return StartCoroutine("waitAndSpawn");
+    }
+
+    IEnumerator difficultyCurve()
+    {
+        yield return new WaitForSeconds(5);
+        spawnMultiplier += .1f;
+        canCo = true;
+
+
     }
 
     Vector3 RandomCircle (Vector3 center, float radius)

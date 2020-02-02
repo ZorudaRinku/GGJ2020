@@ -4,25 +4,31 @@ using UnityEngine;
 
 public class birbSpawner : MonoBehaviour
 {
-    [SerializeField] float spawnSpeedSecondsLow = 4f;
-    [SerializeField] float spawnSpeedSecondsHigh = 7f;
+    [SerializeField] float spawnSpeedSecondsLow = 12f;
+    [SerializeField] float spawnSpeedSecondsHigh = 21f;
     [SerializeField] float spawnRadiusLow = 5f;
     [SerializeField] float spawnRadiusHigh = 10f;
     [SerializeField] float spawnMultiplier = 1f;
     [SerializeField] GameObject birbPrefab;
     [SerializeField] Transform heartShip;
+    bool canCo = true;
 
     // Start is called before the first frame update
-    IEnumerator Start() //void Start()
+    void Start() //void Start()
     {
-
-        yield return StartCoroutine("waitAndSpawn");
+        spawnMultiplier = 1f;
+        StartCoroutine("waitAndSpawn");
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (canCo)
+        {
+            StartCoroutine(difficultyCurve());
+            canCo = false;
+        }
+        
 
     }
 
@@ -53,6 +59,14 @@ public class birbSpawner : MonoBehaviour
         pos.y = center.y + radius * Mathf.Cos(angle * Mathf.Deg2Rad);
         pos.z = center.z;
         return pos;
+    }
+
+    IEnumerator difficultyCurve()
+    {
+        yield return new WaitForSeconds(5);
+        spawnMultiplier += .1f;
+        canCo = true;
+
     }
 }
 
