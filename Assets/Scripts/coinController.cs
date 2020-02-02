@@ -22,7 +22,11 @@ public class coinController : MonoBehaviour
         {
             gameManager.coins += 500;
             Destroy(gameObject);
-            Debug.Log(gameManager.coins);
+        }
+        if (anchorCollision.transform.tag == "Player")//destroys coin gives coin
+        {
+            gameManager.coins += 500;
+            Destroy(gameObject);
         }
     }
 }
